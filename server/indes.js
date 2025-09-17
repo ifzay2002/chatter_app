@@ -4,6 +4,8 @@ import express from "express";
 import { connectDb } from "./db/connection.db.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+// ...existing code...
+export default app; // If using ES modules (which you are)
 
 
 connectDb(); // Connect to the database
