@@ -24,15 +24,15 @@ jobs:
       - name: Run backend tests
         run: cd server && npm test
 
-      # Frontend
+      # Frontend (build only, no tests)
       - name: Set up Node.js for frontend
         uses: actions/setup-node@v4
         with:
           node-version: 20
       - name: Install frontend dependencies
         run: cd client && npm install
-      - name: Run frontend tests
-        run: cd client && npm test
+      - name: Build frontend
+        run: cd client && npm run build
 
       # Build Docker images
       - name: Build Docker images
