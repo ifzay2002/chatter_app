@@ -1,5 +1,5 @@
-# Use Node.js LTS image
-FROM node:20
+# Build stage
+FROM node:20 AS builder
 
 WORKDIR /app
 
@@ -10,8 +10,14 @@ COPY . .
 
 RUN npm run build
 
-# Install serve to serve the build folder
+# Production stage
+FROM node:20-alpine
+
+WORKDIR /app
+
 RUN npm install -g serve
+
+COPY --from=builder /app/dist ./dist
 
 EXPOSE 5173
 
